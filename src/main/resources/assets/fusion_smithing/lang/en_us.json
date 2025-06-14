@@ -1,0 +1,8 @@
+{
+  "item.fusion_smithing.fusion_smithing_template": "Fusion Smithing Template",
+  "text.fusion_smithing.title": "Fusion Smithing",
+  "text.fusion_smithing.applies_to": "Any Equipment",
+  "text.fusion_smithing.ingredients": "Any Equipment",
+  "text.fusion_smithing.base_slot_description": "Add any armor, weapon, or tool",
+  "text.fusion_smithing.additions_slot_description": "Add any armor, weapon, or tool"
+}
