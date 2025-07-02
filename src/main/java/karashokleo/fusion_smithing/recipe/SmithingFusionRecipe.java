@@ -45,9 +45,10 @@ public class SmithingFusionRecipe implements SmithingRecipe {
 
     @Override
     public boolean matches(Container container, Level level) {
-        return this.template.test(container.getItem(0)) &&
-               this.base.test(container.getItem(1)) &&
-               this.addition.test(container.getItem(2));
+        return 
+        this.template.test(container.getItem(0)) &&
+        this.base.test(container.getItem(1)) &&
+        this.addition.test(container.getItem(2));
     }
 
     @Override

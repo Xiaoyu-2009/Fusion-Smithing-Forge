@@ -6,6 +6,7 @@ license="MIT"
 modId="fusion_smithing"
 version="${mod_version}"
 displayName="Fusion Smithing"
+logoFile="assets/fusion_smithing/icon.png"
 authors="Karashok-Leo"
 credits="Ported to Forge by Xiaoyu_2009"
 description='''
@@ -25,10 +26,3 @@ Fusion Smithing allows you to combine the NBT data of two items in a smithing ta
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
-
-[[dependencies.divine_creation]]
-    modId="curios"
-    mandatory=false
-    versionRange="[5.4.0+1.20.1,)"
-    ordering="AFTER"
-    side="BOTH" 

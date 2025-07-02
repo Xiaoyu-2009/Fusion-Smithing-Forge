@@ -15,8 +15,8 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 /**
  * Fusion Smithing Mod[融锻]
@@ -27,7 +27,6 @@ import org.slf4j.LoggerFactory;
 public class FusionSmithing {
     public static final String MOD_ID = "fusion_smithing";
     public static final String RESOURCE_PREFIX = "fusion_smithing";
-    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static ForgeConfigSpec CONFIG_SPEC;
     public static FSConfig CONFIG;
@@ -42,16 +41,19 @@ public class FusionSmithing {
 
         MinecraftForge.EVENT_BUS.addListener(this::onLootTableLoad);
     }
-    
+
     private void setupConfig() {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         CONFIG = new FSConfig(builder);
         CONFIG_SPEC = builder.build();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CONFIG_SPEC);
     }
-    
+
     private void onLootTableLoad(LootTableLoadEvent event) {
-        if (event.getName().toString().equals(CONFIG.injectedLootTable.get())) {
+        String lootTableName = event.getName().toString();
+        List<? extends String> configuredLootTables = CONFIG.lootTables.get();
+
+        if (configuredLootTables.contains(lootTableName)) {
             LootPool pool = LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1))
                     .add(LootItem.lootTableItem(FusionSmithingTemplateItem.FUSION_SMITHING_TEMPLATE.get()))
@@ -67,4 +69,4 @@ public class FusionSmithing {
     public static String createTranslationKey(String type, String path) {
         return type + '.' + RESOURCE_PREFIX + '.' + path;
     }
-} 
+}

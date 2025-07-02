@@ -48,4 +48,4 @@ public class SmithingFusionRecipeSerializer implements RecipeSerializer<Smithing
         recipe.base.toNetwork(buffer);
         recipe.addition.toNetwork(buffer);
     }
-} 
+}

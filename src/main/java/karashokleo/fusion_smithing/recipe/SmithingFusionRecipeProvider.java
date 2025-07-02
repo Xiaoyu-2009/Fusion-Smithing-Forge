@@ -48,8 +48,8 @@ public record SmithingFusionRecipeProvider(
     }
     
     public static void register(Consumer<FinishedRecipe> consumer, ResourceLocation id, SmithingFusionMode mode, 
-                               Ingredient template, Ingredient base, Ingredient addition) {
+        Ingredient template, Ingredient base, Ingredient addition) {
         consumer.accept(new SmithingFusionRecipeProvider(id, SmithingFusionRecipeSerializer.SMITHING_FUSION.get(), 
-                mode, template, base, addition));
+        mode, template, base, addition));
     }
 } 

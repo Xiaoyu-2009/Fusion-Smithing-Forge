@@ -4,7 +4,10 @@ import karashokleo.fusion_smithing.FusionSmithing;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SmithingTemplateItem;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -13,14 +16,12 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.List;
 
 public class FusionSmithingTemplateItem {
-    // 文本
     private static final Component FS_TITLE_TEXT = Component.translatable(FusionSmithing.createTranslationKey("text", "title")).withStyle(ChatFormatting.GRAY);
     private static final Component FS_APPLIES_TO_TEXT = Component.translatable(FusionSmithing.createTranslationKey("text", "applies_to")).withStyle(ChatFormatting.BLUE);
     private static final Component FS_INGREDIENTS_TEXT = Component.translatable(FusionSmithing.createTranslationKey("text", "ingredients")).withStyle(ChatFormatting.BLUE);
     private static final Component FS_BASE_SLOT_DESCRIPTION_TEXT = Component.translatable(FusionSmithing.createTranslationKey("text", "base_slot_description"));
     private static final Component FS_ADDITIONS_SLOT_DESCRIPTION_TEXT = Component.translatable(FusionSmithing.createTranslationKey("text", "additions_slot_description"));
 
-    // 纹理
     private static final ResourceLocation EMPTY_ARMOR_SLOT_HELMET_TEXTURE = new ResourceLocation("item/empty_armor_slot_helmet");
     private static final ResourceLocation EMPTY_ARMOR_SLOT_CHESTPLATE_TEXTURE = new ResourceLocation("item/empty_armor_slot_chestplate");
     private static final ResourceLocation EMPTY_ARMOR_SLOT_LEGGINGS_TEXTURE = new ResourceLocation("item/empty_armor_slot_leggings");
@@ -31,15 +32,19 @@ public class FusionSmithingTemplateItem {
     private static final ResourceLocation EMPTY_SLOT_SHOVEL_TEXTURE = new ResourceLocation("item/empty_slot_shovel");
     private static final ResourceLocation EMPTY_SLOT_HOE_TEXTURE = new ResourceLocation("item/empty_slot_hoe");
 
-    // 物品注册
-    private static final DeferredRegister<net.minecraft.world.item.Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, FusionSmithing.MOD_ID);
-    
-    // 模板物品
-    public static final RegistryObject<SmithingTemplateItem> FUSION_SMITHING_TEMPLATE = ITEMS.register("fusion_smithing_template", 
-            FusionSmithingTemplateItem::createTemplate);
+    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, FusionSmithing.MOD_ID);
+
+    public static final RegistryObject<SmithingTemplateItem> FUSION_SMITHING_TEMPLATE = ITEMS.register("fusion_smithing_template", FusionSmithingTemplateItem::createTemplate);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
+        eventBus.addListener(FusionSmithingTemplateItem::addToCreativeTab);
+    }
+
+    private static void addToCreativeTab(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(FUSION_SMITHING_TEMPLATE);
+        }
     }
 
     public static SmithingTemplateItem createTemplate() {
