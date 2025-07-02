@@ -5,8 +5,8 @@ plugins {
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
 }
 
-version = '1.0.0'
-group = 'karashokleo.fusion_smithing'
+version = mod_version
+group = 'karashokleo.fusion_smithing_forge'
 
 // 确保所有任务使用UTF-8编码
 tasks.withType(JavaCompile) {
@@ -20,11 +20,11 @@ tasks.withType(ProcessResources).configureEach {
 }
 
 base {
-    archivesName = 'fusion_smithing'
+    archivesName = 'fusion_smithing_forge'
 }
 
 java {
-    archivesBaseName = 'fusion_smithing'
+    archivesBaseName = 'fusion_smithing_forge'
     toolchain.languageVersion = JavaLanguageVersion.of(17)
     
     compileJava {
@@ -45,18 +45,18 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                "fusion_smithing" {
+                "fusion_smithing_forge" {
                     source sourceSets.main
                 }
             }
         }
 
         client {
-            property 'forge.enabledGameTestNamespaces', 'fusion_smithing'
+            property 'forge.enabledGameTestNamespaces', 'fusion_smithing_forge'
         }
 
         server {
-            property 'forge.enabledGameTestNamespaces', 'fusion_smithing'
+            property 'forge.enabledGameTestNamespaces', 'fusion_smithing_forge'
             args '--nogui'
         }
     }
@@ -76,11 +76,11 @@ dependencies {
 }
 
 tasks.named('processResources', ProcessResources).configure {
-    var replaceProperties = [
+            var replaceProperties = [
             minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
             forge_version: forge_version, forge_version_range: forge_version_range,
             loader_version_range: loader_version_range,
-            mod_id: 'fusion_smithing', mod_name: 'Fusion Smithing', mod_license: 'MIT', mod_version: '1.0.0',
+            mod_id: 'fusion_smithing_forge', mod_name: 'Fusion Smithing Forge', mod_license: 'MIT', mod_version: mod_version,
             mod_authors: 'Karashok-Leo', mod_description: 'Fusion Smithing allows you to combine the NBT data of two items in a smithing table.',
     ]
     inputs.properties replaceProperties
@@ -95,7 +95,7 @@ tasks.named('processResources', ProcessResources).configure {
 jar {
     manifest {
         attributes([
-                'Specification-Title'     : 'fusion_smithing',
+                'Specification-Title'     : 'fusion_smithing_forge',
                 'Specification-Vendor'    : 'Karashok-Leo',
                 'Specification-Version'   : '1',
                 'Implementation-Title'    : project.name,
@@ -109,7 +109,7 @@ jar {
     finalizedBy 'reobfJar'
     
     // 设置自定义文件名
-    archiveFileName = "fusion_smithing-1.20.1-Forge-1.0.0.jar"
+    archiveFileName = "fusion_smithing_forge-1.20.1-${mod_version}.jar"
 }
 
 publishing {

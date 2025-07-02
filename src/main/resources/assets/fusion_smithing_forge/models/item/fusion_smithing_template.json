@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "fusion_smithing_forge:item/fusion_smithing_template"
+  }
+}

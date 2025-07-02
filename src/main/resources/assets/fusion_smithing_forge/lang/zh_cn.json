@@ -1,0 +1,8 @@
+{
+  "item.fusion_smithing_forge.fusion_smithing_template": "融锻模板",
+  "text.fusion_smithing_forge.title": "融锻",
+  "text.fusion_smithing_forge.applies_to": "任意装备",
+  "text.fusion_smithing_forge.ingredients": "任意装备",
+  "text.fusion_smithing_forge.base_slot_description": "放入任意盔甲、武器或工具",
+  "text.fusion_smithing_forge.additions_slot_description": "放入任意盔甲、武器或工具"
+}

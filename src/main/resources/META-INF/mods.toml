@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="MIT"
+
+[[mods]]
+modId="fusion_smithing_forge"
+version="${mod_version}"
+displayName="Fusion Smithing Forge"
+logoFile="assets/fusion_smithing_forge/icon.png"
+authors="Karashok-Leo"
+credits="Ported to Forge by Xiaoyu_2009"
+description='''
+Fusion Smithing allows you to combine the NBT data of two items in a smithing table.
+'''
+
+[[dependencies.fusion_smithing_forge]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.fusion_smithing_forge]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"

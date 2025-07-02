@@ -1,0 +1,13 @@
+{
+  "type": "fusion_smithing_forge:smithing_fusion",
+  "mode": "MERGE",
+  "template": {
+    "item": "fusion_smithing_forge:fusion_smithing_template"
+  },
+  "base": {
+    "tag": "c:chestplates"
+  },
+  "addition": {
+    "tag": "c:chestplates"
+  }
+}
